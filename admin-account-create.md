@@ -1,5 +1,5 @@
 # If one needs to create additional administrative accounts on a Rhel 9 machine
-# as root
+  - as root
   - sud useradd - m -s /bin/bash admin-account # Creates the User account, -m: creates a home directory (/home/admin-account), -s /bin/bash: sets a the default shell to bash
   - sudo passwd admin-account #sets password
   - sudo usermod-aG wheel admin-account # Adds the user to the sudoeers file, to grant admin-account full root privileges, add i the wheel group
@@ -9,3 +9,11 @@
   - (Verify access)
   - as the created account, escalate priv via: sudo -s
   - Sudo whoami #output should be root
+
+# Update SSL cert workflow
+  - login to server whos ssl cert has expired
+  - use openssl to generate CSR
+  - Give csr to sysadmin
+  - They will give you new server.key
+  - take content of key and update the server.key in the server
+  - restart machine
